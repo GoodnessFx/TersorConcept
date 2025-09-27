@@ -2,15 +2,14 @@ import { motion } from 'motion/react';
 import { Button } from './ui/button';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { useCallback } from 'react';
 
 export default function HeroSection() {
-  const handleNavClick = (href: string) => {
-    console.log('Navigation clicked:', href); // Debug log
+  const handleNavClick = useCallback((href: string) => {
     const targetId = href.startsWith('#') ? href.substring(1) : href;
     const element = document.getElementById(targetId);
     
     if (element) {
-      console.log('Element found, scrolling to:', targetId); // Debug log
       const headerOffset = 100; // Account for fixed header with extra margin
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -22,7 +21,7 @@ export default function HeroSection() {
     } else {
       console.warn(`Element with ID "${targetId}" not found`);
     }
-  };
+  }, []);
 
   return (
     <section id="home" className="relative min-h-screen flex items-center bg-gradient-to-br from-blue-50 to-white overflow-hidden">

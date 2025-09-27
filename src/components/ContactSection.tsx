@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { motion } from 'motion/react';
 import { 
   Phone, 
@@ -14,7 +14,7 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Card, CardContent } from './ui/card';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -37,17 +37,35 @@ export default function ContactSection() {
     'General Consultation',
   ];
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
+  const handleInputChange = useCallback((field: string, value: string) => {
+    // Basic XSS protection - sanitize input
+    const sanitizedValue = value.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+    setFormData(prev => ({ ...prev, [field]: sanitizedValue }));
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Basic validation
+    // Enhanced validation with security checks
     if (!formData.name || !formData.email || !formData.phone || !formData.message) {
       toast.error('Please fill in all required fields');
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error('Please enter a valid email address');
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Phone validation (basic)
+    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+    if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
+      toast.error('Please enter a valid phone number');
       setIsSubmitting(false);
       return;
     }
@@ -66,7 +84,7 @@ export default function ContactSection() {
         service: '',
         message: '',
       });
-    } catch (error) {
+    } catch {
       toast.error('Sorry, there was an error sending your message. Please try again.');
     } finally {
       setIsSubmitting(false);

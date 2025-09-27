@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { motion } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
@@ -15,7 +15,7 @@ export default function Navigation() {
     { href: '#contact', label: 'Contact' },
   ];
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = useCallback((href: string) => {
     const targetId = href.startsWith('#') ? href.substring(1) : href;
     const element = document.getElementById(targetId);
     
@@ -31,7 +31,7 @@ export default function Navigation() {
     } else {
       console.warn(`Element with ID "${targetId}" not found`);
     }
-  };
+  }, []);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
