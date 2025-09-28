@@ -235,7 +235,7 @@ export default function Footer() {
           className="text-center mt-8 pt-8 border-t border-gray-800"
         >
           <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-600 to-red-600 text-white rounded-full font-medium">
-            <span className="text-lg">...experience the difference</span>
+           
           </div>
         </motion.div>
       </div>

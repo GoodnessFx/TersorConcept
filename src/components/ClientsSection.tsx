@@ -33,7 +33,7 @@ export default function ClientsSection() {
             Trusted by Industry Leaders
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We've helped dozens of companies navigate NAFDAC regulations successfully
+            We've helped dozens of companies navigate NAFDAC regulations successfully.
           </p>
         </motion.div>
 
