@@ -14,7 +14,7 @@ export default function TeamSection() {
       bgColor: 'bg-green-100',
     },
     {
-      name: 'Obot Nkamiang Sampson',
+      name: 'Goodness Iyamah',
       position: 'Managing Partner',
       background: 'Accounting graduate specializing in Regulatory Affairs & Import/Documentation Management with extensive expertise.',
       icon: GraduationCap,
@@ -22,7 +22,7 @@ export default function TeamSection() {
       bgColor: 'bg-red-100',
     },
     {
-      name: 'Franklin Obinna Ezebulanwa',
+      name: 'Emmmauel Ohaekazi',
       position: 'Chief Operating Officer',
       background: 'Banking & Finance graduate with diverse experience in media, real estate, and product registration consulting.',
       icon: Briefcase,
@@ -62,11 +62,12 @@ export default function TeamSection() {
                 <CardContent className="p-0">
                   {/* Profile Image */}
                   <div className="relative overflow-hidden rounded-t-lg">
-                    <ImageWithFallback
-                      src="https://images.unsplash.com/photo-1758518729685-f88df7890776?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB0ZWFtJTIwbWVldGluZ3xlbnwxfHx8fDE3NTg2MjY5MTl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                      alt={`${member.name} - ${member.position}`}
-                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                   <ImageWithFallback
+  src="https://media-los2-1.cdn.whatsapp.net/v/t61.24694-24/560616039_1501765314298895_6353041700066081418_n.jpg?ccb=11-4&oh=01_Q5Aa2wGNqmYnIedQXTXTjFfYp57zABl5ydI7MYmcN6Ji96OLuA&oe=68FCAAFD&_nc_sid=5e03e0&_nc_cat=110"
+  alt={`${member.name} - ${member.position}`}
+  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+/>
+
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
