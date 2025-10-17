@@ -63,7 +63,7 @@ export default function ContactSection() {
     }
 
     // Phone validation (basic)
-    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+    const phoneRegex = /^[+]?[1-9][\d]{0,15}$/;
     if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
       toast.error('Please enter a valid phone number');
       setIsSubmitting(false);

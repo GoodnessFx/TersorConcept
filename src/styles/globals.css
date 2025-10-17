@@ -193,3 +193,9 @@ html {
 section {
   scroll-margin-top: 6.25rem;
 }
+
+/* Prevent horizontal scroll on small devices due to overflowing decorations */
+html, body, #root {
+  overflow-x: hidden;
+  width: 100%;
+}
